@@ -13,6 +13,16 @@ import{SharedService} from './shared.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { CountryComponent } from './country/country.component';
+import { AddEditCountryComponent } from './country/add-edit-country/add-edit-country.component';
+import { ShowCountryComponent } from './country/show-country/show-country.component';
+import { LanguageComponent } from './language/language.component';
+import { AddEditLanguageComponent } from './language/add-edit-language/add-edit-language.component';
+import { ShowLanguageComponent } from './language/show-language/show-language.component';
+import { CompanyprofileComponent } from './companyprofile/companyprofile.component';
+import { ShowCompanyprofileComponent } from './companyprofile/show-companyprofile/show-companyprofile.component';
+import { AddEditCompanyprofileComponent } from './companyprofile/add-edit-companyprofile/add-edit-companyprofile.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +32,16 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     AddEditDepComponent,
     EmployeeComponent,
     ShowEmpComponent,
-    AddEditEmpComponent
+    AddEditEmpComponent,
+    CountryComponent,
+    AddEditCountryComponent,
+    ShowCountryComponent,
+    LanguageComponent,
+    AddEditLanguageComponent,
+    ShowLanguageComponent,
+    CompanyprofileComponent,
+    ShowCompanyprofileComponent,
+    AddEditCompanyprofileComponent
   ],
   imports: [
     BrowserModule,

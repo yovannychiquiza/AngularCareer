@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 
@@ -7,8 +7,10 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-readonly APIUrl="http://localhost:53535/api";
-readonly PhotoUrl = "http://localhost:53535/Photos/";
+readonly APIUrl="http://localhost:5000/api";
+readonly APIUrlSystem="http://localhost:5000/api/careercloud/system/v1";
+readonly APIUrlCompany="http://localhost:5000/api/careercloud/company/v1";
+readonly PhotoUrl = "http://localhost:5000/Photos/";
 
   constructor(private http:HttpClient) { }
 
@@ -52,6 +54,63 @@ readonly PhotoUrl = "http://localhost:53535/Photos/";
 
   getAllDepartmentNames():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl+'/Employee/GetAllDepartmentNames');
+  }
+
+
+
+  getCountryList():Observable<any[]>{
+    return this.http.get<any>(this.APIUrlSystem+'/countrycode');
+  }
+
+  addCountry(val:any){
+    return this.http.post(this.APIUrlSystem+'/countrycode',val);
+  }
+
+  updateCountry(val:any){
+    return this.http.put(this.APIUrlSystem+'/countrycode',val);
+  }
+
+  deleteCountry(val:any){
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json',}),body: val};
+    return this.http.delete(this.APIUrlSystem+'/countrycode', options);
+  }
+
+
+  
+  getLanguageList():Observable<any[]>{
+    return this.http.get<any>(this.APIUrlSystem+'/languagecode');
+  }
+
+  addLanguage(val:any){
+    return this.http.post(this.APIUrlSystem+'/languagecode',val);
+  }
+
+  updateLanguage(val:any){
+    return this.http.put(this.APIUrlSystem+'/languagecode',val);
+  }
+
+  deleteLanguage(val:any){
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json',}),body: val};
+    return this.http.delete(this.APIUrlSystem+'/languagecode', options);
+  }
+
+
+  
+  getCompanyprofileList():Observable<any[]>{
+    return this.http.get<any>(this.APIUrlCompany+'/profile');
+  }
+
+  addCompanyprofile(val:any){
+    return this.http.post(this.APIUrlCompany+'/profile',val);
+  }
+
+  updateCompanyprofile(val:any){
+    return this.http.put(this.APIUrlCompany+'/profile',val);
+  }
+
+  deleteCompanyprofile(val:any){
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json',}),body: val};
+    return this.http.delete(this.APIUrlCompany+'/profile', options);
   }
 
 }
